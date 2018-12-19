@@ -6,6 +6,7 @@ module.exports = {
     "@babel/preset-react",
   ],
   plugins: [
+    "babel-plugin-emotion",
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-transform-runtime",
     ["babel-plugin-module-resolver", {
@@ -13,12 +14,8 @@ module.exports = {
     }],
   ],
   env: {
-    production: {
-      plugins: [["babel-plugin-emotion", { hoist: true }]],
-    },
     development: {
       plugins: [
-        ["babel-plugin-emotion", { sourceMap: true, autoLabel: true }],
         "react-hot-loader/babel",
       ],
     },
