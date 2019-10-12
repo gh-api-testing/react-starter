@@ -7,7 +7,6 @@ import { Helmet, HelmetProvider } from 'react-helmet-async'
 const globalStyles = css`
   body {
     margin: 0;
-    background-color: #eee;
     font-family: 'Assistant', sans-serif;
   }
 `
