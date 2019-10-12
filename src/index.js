@@ -2,6 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 
-const root = document.getElementById('app')
-root.style = "height: 100%"
+const root = document.createElement('div')
+document.body.appendChild(root)
 ReactDOM.render(<App/>, root)
