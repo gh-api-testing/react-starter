@@ -2,7 +2,7 @@
   "name": "react-starter",
   "version": "0.0.1",
   "scripts": {
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server"
   },
   "dependencies": {
     "@babel/preset-env": "^7.10.4",
@@ -13,7 +13,7 @@
     "polished": "^3.6.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-helmet-async": "^1.0.6",
+    "react-helmet": "^6.1.0",
     "react-hot-loader": "^4.12.21",
     "react-icons": "^3.10.0"
   },
