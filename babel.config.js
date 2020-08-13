@@ -4,6 +4,7 @@ module.exports = {
   presets: [
     "@babel/preset-env",
     "@babel/preset-react",
+    "@emotion/babel-preset-css-prop",
   ],
   plugins: [
     "babel-plugin-emotion",
@@ -14,11 +15,4 @@ module.exports = {
       root: path.join(__dirname, 'src'),
     }],
   ],
-  env: {
-    development: {
-      plugins: [
-        "react-hot-loader/babel",
-      ],
-    },
-  },
 }

@@ -1,9 +1,14 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const DotenvWebpackPlugin = require('dotenv-webpack')
+
+const isDevelopment = process.env.NODE_ENV !== 'production'
 
 module.exports = {
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+  entry: './src/app.js',
   module: {
     rules: [
       {
@@ -11,13 +16,22 @@ module.exports = {
         include: [
           path.resolve(__dirname, 'src'),
         ],
-        loader: 'babel-loader',
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              plugins: [isDevelopment && require.resolve('react-refresh/babel')].filter(Boolean)
+            }
+          },
+        ],
       },
       /**
        * For loading CSS in dependencies.
+       */
+      /*
       {
         test: /\.css$/,
-        include: /\/node_modules\/react-datepicker\//,
+        include: /\/node_modules\/(react-datepicker)\//,
         loader: [
           'to-string-loader',
           'css-loader',
@@ -27,20 +41,16 @@ module.exports = {
     ],
   },
   plugins: [
+    new DotenvWebpackPlugin(),
     new HtmlWebpackPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-  ],
+    isDevelopment && new ReactRefreshWebpackPlugin(),
+  ].filter(Boolean),
   devtool: 'source-map',
   devServer: {
     hot: true,
     overlay: true,
     host: '0.0.0.0',
     port: 8080,
-    quiet: true,
-  },
-  resolve: {
-    alias: {
-      'react-dom': '@hot-loader/react-dom',
-    },
+    //historyApiFallback: true,
   },
 }

@@ -1,16 +1,19 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
-import styled from '@emotion/styled'
+import ReactDOM from 'react-dom'
+import { Global } from '@emotion/core'
 import Head from './head'
-import HelloWorld from './components/hello-world'
+import globalStyles from './global-styles'
 
-const App = () => (
-  <>
-    <Helmet>
+const App = () => {
+  return (
+    <>
       <Head/>
-    </Helmet>
-    <HelloWorld/>
-  </>
-)
+      <Global styles={globalStyles}/>
+      <h1>👋🌎</h1>
+    </>
+  )
+}
 
-export default App
+const root = document.createElement('div')
+document.body.appendChild(root)
+ReactDOM.render(<App/>, root)
